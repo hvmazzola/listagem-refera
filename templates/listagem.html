@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+
+{% block app_content %}
+
+
+
+
+    <table class="table table-sm">
+
+    <h3> Usuários: </h3>
+        <thead>
+            <th scope="col">#id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Cidade</th>
+        </thead>
+            {% for usuario in usuarios%}
+        <tbody>
+        <tr>
+            <td scope="row"> {{ usuario["id"] }}</td>
+            <td scope="row"> {{ usuario["name"] }}</td>
+            <td scope="row"> {{ usuario["email"] }}</td>
+            <td scope="row"> {{ usuario["phone"] }}</td>
+            <td scope="row"> {{ usuario["address"]["city"] }}</td>
+            
+        </tr>
+        </tbody>
+            {% endfor %}
+    </table>
+
+
+{% endblock %}

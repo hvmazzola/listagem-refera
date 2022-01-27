@@ -17,7 +17,7 @@ nav.init_app(app)
 @nav.navigation()
 def menunavbar():
     menu = Navbar('Teste Refera')
-    menu.items = [View('Home', 'index'), View('Adicionar usuario', 'adicionar')]
+    menu.items = [View('Home', 'index'),View('Usuários', 'listar'), View('Adicionar usuário', 'adicionar')]
     return menu
 
 @app.route("/")
@@ -35,10 +35,10 @@ def adicionar():
             
     return render_template('formulario.html', title='Autenticação de usuários', form=f, menu=0)
 
-@app.route("/consulta_api",methods=['GET'])
-def consulta_api():
-    resultado = requests.get("https://jsonplaceholder.typicode.com/users")
-    return (str(resultado.text))
+@app.route('/listar',methods=['GET'])
+def listar():
+    resultado = requests.get("https://jsonplaceholder.typicode.com/users").json()
+    return render_template('listagem.html',usuarios=resultado)
 
 if __name__=='__main__':
     app.run(host='0.0.0.0',port=5000,debug=True)

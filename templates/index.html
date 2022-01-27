@@ -6,7 +6,7 @@
     <div class="jumbotron">
         <h2>Teste Refera</h2>
         <h3>Henrique Veras Mazzola</h3>
-        <h3>26 de janeiro de 2022</h3>
+        <h3 id="date"></h3>
 
     </div>
 
@@ -17,3 +17,16 @@
 
 
 {% endblock %}
+
+{% block scripts %}
+
+
+<script>
+n =  new Date();
+y = n.getFullYear();
+m = n.getMonth() + 1;
+d = n.getDate();
+document.getElementById("date").innerHTML = d + "/0" +  m + "/" + y;
+    </script>
+
+{%  endblock %}
